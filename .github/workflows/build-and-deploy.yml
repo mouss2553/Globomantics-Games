@@ -2,12 +2,15 @@ name: Build and deploy web game
 
 on:
   push:
-    branches: [main]
+    branches: [develop]
+  pull_request:
+    branches: [recette, main]
+  workflow_dispatch:
 
 env:
   AZURE_WEBAPP_NAME: "globomantics-web-game" # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: "." # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: "5.0"
+  DOTNET_VERSION: "6.0"
 
 jobs:
   build-and-deploy:
