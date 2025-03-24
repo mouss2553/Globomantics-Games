@@ -25,7 +25,6 @@ jobs:
           fi
 
   analyse-codeQL:
-    runs-on: ubuntu-latest
     needs: checks
     if: success()
     uses: ./.github/workflows/codeql-analysis.yml
