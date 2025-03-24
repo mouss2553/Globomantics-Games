@@ -13,6 +13,18 @@ env:
   DOTNET_VERSION: "6.0"
 
 jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Vérification de la version de dotnet"
+        run: |
+          if [ $DOTNET_VERSION != "6.0" ]
+          then
+            echo "pas 6.0"
+          else
+            echo "YES 6.0 !"
+          fi
+
   build-and-deploy:
     runs-on: ubuntu-latest
 
