@@ -13,6 +13,22 @@ env:
   DOTNET_VERSION: "6.0"
 
 jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Vérification de la version de dotnet"
+        run: |
+          if [ $DOTNET_VERSION != "6.0" ]
+          then
+            echo "La version de dotnet ne permet pas de poursuivre ce workflow"
+            exit 1
+          fi
+
+  analyse-codeQL:
+    needs: checks
+    if: success()
+    uses: ./.github/workflows/codeql-analysis.yml
+
   build-and-deploy:
     runs-on: ubuntu-latest
 
